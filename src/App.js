@@ -1,18 +1,17 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ActiveTodos from "./components/ActiveTodos";
 import AddTodo from "./components/AddTodo";
 import Header from "./components/Header";
 import TodoList from "./components/TodoList";
-import { fetchTodos } from "./redux/todoSlice";
+// import { fetchTodos } from "./redux/todoSlice";
 
 function App() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const todos = useSelector((state) => state.todoReducer.todos);
 
-  useEffect(() => {
-    dispatch(fetchTodos());
-  });
+  // useEffect(() => {
+  //   dispatch(fetchTodos());
+  // });
 
   return (
     <div className="flex items-center justify-center py-10 ">

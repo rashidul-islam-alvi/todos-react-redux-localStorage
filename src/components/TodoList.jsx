@@ -6,7 +6,7 @@ import EditModal from "./EditModal";
 import { MdDoneAll } from "react-icons/md";
 
 const TodoList = ({ todos }) => {
-  const [editing, setEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const [checked, setChecked] = useState(false);
   const [currentTodo, setCurrentTodo] = useState([]);
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const TodoList = ({ todos }) => {
   };
 
   const handleEditTodo = (todo) => {
-    setEditing(true);
+    setIsEditing(true);
     setCurrentTodo(todo);
   };
 
@@ -34,10 +34,10 @@ const TodoList = ({ todos }) => {
     <>
       {todos.length === 0 ? (
         <h1 className="my-10 text-3xl text-center">No Active Todos</h1>
-      ) : editing ? (
+      ) : isEditing ? (
         <EditModal
           todo={currentTodo}
-          setEditing={setEditing}
+          setEditing={setIsEditing}
           setCurrentTodo={setCurrentTodo}
         />
       ) : (

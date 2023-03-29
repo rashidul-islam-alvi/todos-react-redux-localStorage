@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
+// import axios from "axios";
 
 const getToDosFromLocalStorage = () => {
   const localTodoList = window.localStorage.getItem("todoList");
@@ -10,10 +10,10 @@ const getToDosFromLocalStorage = () => {
   }
 };
 
-export const fetchTodos = createAsyncThunk("todos/fetchTodos", async () => {
-  const res = await axios.get("https://jsonplaceholder.typicode.com/todos");
-  return await res.data;
-});
+// export const fetchTodos = createAsyncThunk("todos/fetchTodos", async () => {
+//   const res = await axios.get("https://jsonplaceholder.typicode.com/todos");
+//   return await res.data;
+// });
 
 const initialState = {
   isLoading: false,
@@ -101,34 +101,34 @@ export const todoSlice = createSlice({
       }
     },
   },
-  extraReducers: (builder) => {
-    builder.addCase(fetchTodos.pending, (state) => {
-      state.isLoading = true;
-    });
-    builder.addCase(fetchTodos.fulfilled, (state, action) => {
-      state.isLoading = false;
+  // extraReducers: (builder) => {
+  //   builder.addCase(fetchTodos.pending, (state) => {
+  //     state.isLoading = true;
+  //   });
+  //   builder.addCase(fetchTodos.fulfilled, (state, action) => {
+  //     state.isLoading = false;
 
-      const todoList = window.localStorage.getItem("todoList");
+  //     const todoList = window.localStorage.getItem("todoList");
 
-      if (todoList) {
-        const todoListArr = JSON.parse(todoList);
+  //     if (todoList) {
+  //       const todoListArr = JSON.parse(todoList);
 
-        todoListArr.length === 0
-          ? window.localStorage.setItem(
-              "todoList",
-              JSON.stringify(action.payload.slice(0, 4))
-            )
-          : (state.todos = todoListArr);
-      }
+  //       todoListArr.length === 0
+  //         ? window.localStorage.setItem(
+  //             "todoList",
+  //             JSON.stringify(action.payload.slice(0, 4))
+  //           )
+  //         : (state.todos = todoListArr);
+  //     }
 
-      state.error = null;
-    });
-    builder.addCase(fetchTodos.rejected, (state, action) => {
-      state.isLoading = false;
-      state.todos = [];
-      state.error = action.error.message;
-    });
-  },
+  //     state.error = null;
+  //   });
+  //   builder.addCase(fetchTodos.rejected, (state, action) => {
+  //     state.isLoading = false;
+  //     state.todos = [];
+  //     state.error = action.error.message;
+  //   });
+  // },
 });
 
 export const {
