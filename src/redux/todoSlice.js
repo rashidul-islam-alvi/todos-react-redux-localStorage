@@ -108,17 +108,18 @@ export const todoSlice = createSlice({
     builder.addCase(fetchTodos.fulfilled, (state, action) => {
       state.isLoading = false;
 
-      /*run this code once to fetch data
-      
-      
-      
-      window.localStorage.setItem(
-        "todoList",
-        JSON.stringify(action.payload.slice(0, 4))
-      );
+      const todoList = window.localStorage.getItem("todoList");
 
-      
-      */
+      if (todoList) {
+        const todoListArr = JSON.parse(todoList);
+
+        todoListArr.length === 0
+          ? window.localStorage.setItem(
+              "todoList",
+              JSON.stringify(action.payload.slice(0, 4))
+            )
+          : (state.todos = todoListArr);
+      }
 
       state.error = null;
     });
