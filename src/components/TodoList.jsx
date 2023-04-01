@@ -48,7 +48,9 @@ const TodoList = ({ todos }) => {
                 todo.completed ? "bg-red-200 line-through" : ""
               }  `}
             >
-              <span className={`text-xl font-semibold `}>{todo.title}</span>
+              <span className={`text-xl font-semibold flex break-all `}>
+                {todo.title}
+              </span>
               <div className="flex items-center">
                 <button className="" onClick={() => handleCompletedClick(todo)}>
                   <MdDoneAll className="text-xl text-green-700 hover:text-green-400 " />

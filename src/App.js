@@ -16,8 +16,8 @@ function App() {
   // });
 
   return (
-    <div className="flex items-center justify-center py-10 ">
-      <div className="flex  flex-col  min-h-[30%] min-w-[50%] ">
+    <div className="flex md:h-[100vh] md:bg-red-300 items-center justify-center  ">
+      <div className="flex bg-white rounded-sm   flex-col  px-5 py-10 min-h-[30%] min-w-[50%] ">
         <Header />
         <AddTodo todos={todos} />
         <TodoList todos={todos} />
