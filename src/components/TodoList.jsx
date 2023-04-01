@@ -61,11 +61,11 @@ const TodoList = ({ todos }) => {
                 >
                   <AiOutlineDelete className="text-xl text-red-700 hover:text-red-400" />
                 </button>
-                <button
-                  className="ml-5 text-blue-400"
-                  onClick={() => handleEditTodo(todo)}
-                >
-                  <AiOutlineEdit className="text-xl text-gray-700 hover:text-gray-400" />
+                <button className="ml-5 text-blue-400">
+                  <AiOutlineEdit
+                    className="text-xl text-gray-700 hover:text-gray-400"
+                    onClick={() => handleEditTodo(todo)}
+                  />
                 </button>
               </div>
             </div>

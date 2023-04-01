@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MdDoneAll } from "react-icons/md";
+import { MdCancel, MdDoneAll } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { updateTodo } from "../redux/todoSlice";
 
@@ -19,7 +19,9 @@ const EditModal = ({ todo, setEditing }) => {
       setEditing(false);
     }
   };
-
+  const handleCancelClick = () => {
+    setEditing(false);
+  };
   return (
     <form onSubmit={handleSubmit} className="flex items-center my-10 border-2 ">
       <input
@@ -29,6 +31,12 @@ const EditModal = ({ todo, setEditing }) => {
       />
       <button className="flex items-center px-4 py-2 rounded-md cursor-pointer">
         <MdDoneAll className="text-3xl text-green-700 hover:text-green-400 " />
+      </button>
+      <button
+        onClick={handleCancelClick}
+        className="flex items-center px-4 py-2 rounded-md cursor-pointer"
+      >
+        <MdCancel className="text-3xl text-red-700 hover:text-green-400 " />
       </button>
     </form>
   );
